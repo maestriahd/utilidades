@@ -32,7 +32,7 @@ export NVM_DIR=~/.nvm
 export WORKON_HOME=~/.envs
 . /usr/local/opt/nvm/nvm.sh
 
-nvm install -g node
+nvm install node
 
 npm install -g gulp-cli grunt-cli bower
 
