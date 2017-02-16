@@ -9,11 +9,14 @@
 USR = ${USERNAME}
 sudo -u $USR yes '' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+sudo -u $USR brew install git wget mc
+
 sudo -H easy_install pip
 
 sudo -H pip install virtualenv
 
 sudo -H pip install virtualenvwrapper --ignore-installed six
+
 
 sudo -u $USR brew install nvm
 
