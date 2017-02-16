@@ -7,31 +7,35 @@
 
 # homebrew
 USR = ${USERNAME}
-sudo -u $USR yes '' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+yes '' | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-sudo -u $USR brew install git wget mc
+brew install git wget mc
+sudo -s <<EOF
 
 sudo -H easy_install pip
 
 sudo -H pip install virtualenv
 
 sudo -H pip install virtualenvwrapper --ignore-installed six
+EOF
 
+brew install nvm
 
-sudo -u $USR brew install nvm
+touch $HOME/.bashrc
+echo "export WORKON_HOME=~/.envs" >> $HOME/.bashrc
+echo ". /usr/local/bin/virtualenvwrapper.sh" >> $HOME/.bashrc
+echo "export NVM_DIR=$HOME/.nvm" >> $HOME/.bashrc
+echo ". /usr/local/opt/nvm/nvm.sh" >> $HOME/.bashrc
+. $HOME/.bashrc
 
-sudo -u $USR touch $HOME/.bashrc
-sudo -u $USR echo "export WORKON_HOME=~/.envs" >> $HOME/.bashrc
-sudo -u $USR echo ". /usr/local/bin/virtualenvwrapper.sh" >> $HOME/.bashrc
-sudo -u $USR echo "export NVM_DIR=$HOME/.nvm" >> $HOME/.bashrc
-sudo -u $USR echo ". /usr/local/opt/nvm/nvm.sh" >> $HOME/.bashrc
+nvm install -g node
 
-sudo -u $USR . $HOME/.bashrc
+npm install -g gulp-cli grunt-cli bower
 
-sudo -u $USR nvm install -g node
-
-sudo -u $USR npm install -g gulp-cli grunt-cli bower
-
-gem install jekyll
 
 brew install pandoc
+
+sudo -s <<EOF
+gem install jekyll
+
+EOF
