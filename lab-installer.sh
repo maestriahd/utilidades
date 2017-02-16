@@ -26,7 +26,11 @@ echo "export WORKON_HOME=~/.envs" >> $HOME/.bashrc
 echo ". /usr/local/bin/virtualenvwrapper.sh" >> $HOME/.bashrc
 echo "export NVM_DIR=$HOME/.nvm" >> $HOME/.bashrc
 echo ". /usr/local/opt/nvm/nvm.sh" >> $HOME/.bashrc
-. $HOME/.bashrc
+
+export NVM_DIR=~/.nvm
+. /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.envs
+. /usr/local/opt/nvm/nvm.sh
 
 nvm install -g node
 
